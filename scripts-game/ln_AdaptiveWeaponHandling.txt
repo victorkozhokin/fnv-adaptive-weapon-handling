@@ -1,0 +1,55 @@
+; Adaptive Weapon Handling -- Data\NVSE\Plugins\Scripts\ln_AdaptiveWeaponHandling.txt
+;
+; Tells the plugin when another mod has taken over the player's hands, so the
+; pose stands down for exactly those moments and nothing else.
+;
+; The engine's own "hands busy" tests cover firing, reloading, melee and idles,
+; and the plugin asks them directly. What they cannot see is a mod driving the
+; arms outside the animation system: kNVSE's ActivateAnim runs a sequence
+; straight on the controller manager, and no anim group ever learns of it. Being
+; told by the mod is the only reliable answer, and this is where that happens.
+;
+; Runs itself: JIP LN compiles anything in this folder at load. No esp, no
+; plugin slot. Requires JIP LN NVSE and JohnnyGuitar NVSE.
+;
+; Calls are counted, not flagged, so two mods overlapping cannot cancel each
+; other out -- but every Begin needs its End. The plugin releases anything left
+; raised after thirty seconds rather than holding the pose off for good.
+;
+; Delete this file and the plugin falls back to SuppressUITrait and the engine
+; tests, which is what it used before.
+
+; --- Announce the layer --------------------------------------------------------
+;
+; Sent once, at load. It is what tells AWHConfig.log that this file compiled at
+; all, which is otherwise indistinguishable from an event that never arrives.
+
+AWHScriptLayerReady
+
+; --- Realtime Pip-Boy Map ------------------------------------------------------
+;
+; Raises the pip-boy without any anim group, so the hands are busy in a way
+; nothing in the animation system reports. The mod announces both ends itself.
+
+SetEventHandlerAlt "RealtimePipMapOpen" (begin Function {}
+	AWHBeginSuppress
+end)
+
+SetEventHandlerAlt "RealtimePipMapClose" (begin Function {}
+	AWHEndSuppress
+end)
+
+; --- B42 Interact --------------------------------------------------------------
+;
+; B42Rap fires when the mod starts pulling the player towards an object. Its own
+; loop counts a duration down at 62.5 units per second, so the end is known up
+; front and needs no second event.
+;
+;   arg 3 (float) is that duration.
+
+SetEventHandlerAlt "B42Rap" (begin Function {ref rObject, string_var sNode, float fDist, float fDuration}
+
+	AWHBeginSuppress
+	CallAfter ((fDuration / 62.5) + 0.15) ({} => AWHEndSuppress)
+
+end)

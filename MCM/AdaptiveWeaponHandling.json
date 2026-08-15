@@ -1,0 +1,306 @@
+{
+ "modName": "AdaptiveWeaponHandling",
+ "displayName": "$modDisplayName",
+ "description": "$modDescription",
+ "saveFile": "AWHConfig/AWHConfig.ini",
+ "minMCMVersion": 1.0,
+ "minModVersion": 1.0,
+ "requirements": [
+  {
+   "type": "dll",
+   "file": "Adaptive Weapon Handling",
+   "version": 3
+  }
+ ],
+ "submenus": {
+  "1": {
+   "listTitle": "$pose",
+   "pageTitle": "$pose",
+   "active": 1,
+   "columns": 1,
+   "enable": 1,
+   "options": {
+    "1": {
+     "title": "$general",
+     "type": 0,
+     "enable": 1
+    },
+    "2": {
+     "title": "$enabled",
+     "type": 5,
+     "enable": 1,
+     "mouse": "$enabledMouse",
+     "vars": [
+      {
+       "configINI": "Settings:Enabled",
+       "default": 1
+      }
+     ]
+    },
+    "3": {
+     "title": "$requireWeaponOut",
+     "type": 5,
+     "enable": 1,
+     "mouse": "$requireWeaponOutMouse",
+     "vars": [
+      {
+       "configINI": "Settings:RequireWeaponOut",
+       "default": 1
+      }
+     ]
+    },
+    "4": {
+     "title": "$disableInCombat",
+     "type": 5,
+     "enable": 1,
+     "mouse": "$disableInCombatMouse",
+     "vars": [
+      {
+       "configINI": "Settings:DisableInCombat",
+       "default": 1
+      }
+     ]
+    },
+    "5": {
+     "title": "$neutraliseVanillaLag",
+     "type": 5,
+     "enable": 1,
+     "mouse": "$neutraliseVanillaLagMouse",
+     "vars": [
+      {
+       "configINI": "Settings:NeutraliseVanillaLag",
+       "default": 1
+      }
+     ]
+    },
+    "6": {
+     "title": "$curve",
+     "type": 0,
+     "enable": 1
+    },
+    "7": {
+     "title": "$poseCurveScale",
+     "type": 2.5,
+     "enable": 1,
+     "mouse": "$poseCurveScaleMouse",
+     "vars": [
+      {
+       "configINI": "Settings:PoseCurveScale",
+       "default": 1.0
+      }
+     ],
+     "scale": {
+      "valueDecimal": 2,
+      "valueIncrement": 0.05,
+      "valueMin": 0.0,
+      "valueMax": 3.0
+     }
+    },
+    "8": {
+     "title": "$smoothingSeconds",
+     "type": 2.5,
+     "enable": 1,
+     "mouse": "$smoothingSecondsMouse",
+     "vars": [
+      {
+       "configINI": "Settings:SmoothingSeconds",
+       "default": 0.06
+      }
+     ],
+     "scale": {
+      "valueDecimal": 2,
+      "valueIncrement": 0.01,
+      "valueMin": 0.0,
+      "valueMax": 0.5,
+      "suffix": "$secondsSuffix"
+     }
+    },
+    "9": {
+     "title": "$standDown",
+     "type": 0,
+     "enable": 1
+    },
+    "10": {
+     "title": "$suppressWhenHandsBusy",
+     "type": 5,
+     "enable": 1,
+     "mouse": "$suppressWhenHandsBusyMouse",
+     "vars": [
+      {
+       "configINI": "Settings:SuppressWhenHandsBusy",
+       "default": 1
+      }
+     ]
+    },
+    "11": {
+     "title": "$suppressInMenus",
+     "type": 5,
+     "enable": 1,
+     "mouse": "$suppressInMenusMouse",
+     "vars": [
+      {
+       "configINI": "Settings:SuppressInMenus",
+       "default": 1
+      }
+     ]
+    },
+    "12": {
+     "title": "$suppressWhenControlsDisabled",
+     "type": 5,
+     "enable": 1,
+     "mouse": "$suppressWhenControlsDisabledMouse",
+     "vars": [
+      {
+       "configINI": "Settings:SuppressWhenControlsDisabled",
+       "default": 1
+      }
+     ]
+    }
+   }
+  },
+  "2": {
+   "listTitle": "$relaxed",
+   "pageTitle": "$relaxedPage",
+   "columns": 1,
+   "enable": 1,
+   "options": {
+    "1": {
+     "title": "$relaxedPose",
+     "type": 0,
+     "enable": 1
+    },
+    "2": {
+     "title": "$relaxedPoseDegrees",
+     "type": 2.5,
+     "enable": 1,
+     "mouse": "$relaxedPoseDegreesMouse",
+     "vars": [
+      {
+       "configINI": "Settings:RelaxedPoseDegrees",
+       "default": 13.0
+      }
+     ],
+     "scale": {
+      "valueDecimal": 1,
+      "valueIncrement": 0.5,
+      "valueMin": 0.0,
+      "valueMax": 45.0,
+      "suffix": "$degreesSuffix"
+     }
+    },
+    "3": {
+     "title": "$relaxedPoseToggleKey",
+     "type": 3,
+     "enable": 1,
+     "mouse": "$relaxedPoseToggleKeyMouse",
+     "keybind": {
+      "type": 0
+     },
+     "vars": [
+      {
+       "configINI": "Settings:RelaxedPoseToggleKey",
+       "default": 44
+      }
+     ]
+    },
+    "4": {
+     "title": "$keepRelaxedOutOfCombat",
+     "type": 5,
+     "enable": 1,
+     "mouse": "$keepRelaxedOutOfCombatMouse",
+     "vars": [
+      {
+       "configINI": "Settings:KeepRelaxedOutOfCombat",
+       "default": 1
+      }
+     ]
+    },
+    "5": {
+     "title": "$idleRelaxSeconds",
+     "type": 2.5,
+     "enable": 1,
+     "mouse": "$idleRelaxSecondsMouse",
+     "vars": [
+      {
+       "configINI": "Settings:IdleRelaxSeconds",
+       "default": 10.0
+      }
+     ],
+     "scale": {
+      "valueDecimal": 1,
+      "valueIncrement": 0.5,
+      "valueMin": 0.0,
+      "valueMax": 60.0,
+      "suffix": "$secondsSuffix"
+     }
+    },
+    "6": {
+     "title": "$transitions",
+     "type": 0,
+     "enable": 1
+    },
+    "7": {
+     "title": "$poseBlendSeconds",
+     "type": 2.5,
+     "enable": 1,
+     "mouse": "$poseBlendSecondsMouse",
+     "vars": [
+      {
+       "configINI": "Settings:PoseBlendSeconds",
+       "default": 0.3
+      }
+     ],
+     "scale": {
+      "valueDecimal": 2,
+      "valueIncrement": 0.05,
+      "valueMin": 0.0,
+      "valueMax": 2.0,
+      "suffix": "$secondsSuffix"
+     }
+    },
+    "8": {
+     "title": "$poseDropSeconds",
+     "type": 2.5,
+     "enable": 1,
+     "mouse": "$poseDropSecondsMouse",
+     "vars": [
+      {
+       "configINI": "Settings:PoseDropSeconds",
+       "default": 0.15
+      }
+     ],
+     "scale": {
+      "valueDecimal": 2,
+      "valueIncrement": 0.05,
+      "valueMin": 0.0,
+      "valueMax": 2.0,
+      "suffix": "$secondsSuffix"
+     }
+    },
+    "9": {
+     "title": "$heavy",
+     "type": 0,
+     "enable": 1
+    },
+    "10": {
+     "title": "$heavyWeaponScale",
+     "type": 2.5,
+     "enable": 1,
+     "mouse": "$heavyWeaponScaleMouse",
+     "vars": [
+      {
+       "configINI": "Settings:HeavyWeaponScale",
+       "default": 0.667
+      }
+     ],
+     "scale": {
+      "valueDecimal": 2,
+      "valueIncrement": 0.05,
+      "valueMin": 0.0,
+      "valueMax": 1.0
+     }
+    }
+   }
+  }
+ }
+}
