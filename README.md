@@ -92,3 +92,7 @@ brew install lld       # brings llvm, for lld-link and llvm-dlltool
 
 The plugin links without a C runtime and without the Windows SDK; the kernel32
 imports are declared by hand in `src/util/win32.h`.
+
+## License
+
+GPL-3.0. See `LICENSE`.
